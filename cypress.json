@@ -1,0 +1,11 @@
+{
+    "baseUrl": "https://checkout.stripe.dev/",
+    "chromeWebSecurity": false,
+    "reporter": "junit",
+    "viewportWidth": 1920,
+    "viewportHeight": 1080,
+    "reporterOptions": {
+      "mochaFile": "results/cypress[hash].xml",
+      "toConsole": true
+    }
+}

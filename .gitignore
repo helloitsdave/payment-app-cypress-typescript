@@ -1,0 +1,30 @@
+# Logs
+logs
+tmp
+results
+*.log
+*.png
+npm-debug.log*
+junit.xml
+*.jar
+reports
+cypress/videos/*
+
+# Dependency directory
+node_modules
+
+# Optional npm cache directory
+.npm
+
+# Compiled code
+lib
+.tmp
+
+# mac os specific files
+.DS_Store
+
+# eslint
+.eslintcache
+
+context
+downloads

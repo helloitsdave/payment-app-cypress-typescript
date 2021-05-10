@@ -1,0 +1,22 @@
+{
+  "root": true,
+  "plugins": ["cypress", "prettier", "@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "cypress/globals": true
+  },
+  "extends": ["plugin:cypress/recommended", "prettier", "plugin:@typescript-eslint/recommended"],
+  "rules": {
+    "semi": [2, "never"],
+    "prettier/prettier": [
+      "error",
+      {"semi": false, "singleQuote": true, "endOfLine":"auto", "trailingComma": "es5"}
+    ],
+    "no-console'": "off",
+    "no-restricted-globals": "off",
+    "prefer-destructuring": "off",
+    "class-methods-use-this": "off",
+    "no-unused-expressions": "off",
+    "lines-between-class-members": "off"
+  }
+}
