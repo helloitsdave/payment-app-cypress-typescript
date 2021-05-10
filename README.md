@@ -1,6 +1,6 @@
 # payment-app-cypress-typescript
 
-This repo is an example Test Framework running against https://checkout.stripe.dev/ and using https://www.cypress.io with typescript
+Example Test Framework running against https://checkout.stripe.dev/ and using https://www.cypress.io with typescript
 
 ## Prerequisites
 
@@ -25,11 +25,11 @@ There are several ways to run the suite. It's also possible to run subsets or ta
 
 You can also select which browser to use in the top right of the cypress app.
 
-It is possible to run using electron in CI without any additional browsers installed.
+## Docker
 
-### Test Related Folders
+Docker can be used to run the framework against chrome using the following command.
 
-Test related files can be found in the following folders.
+`docker run -it -v $PWD:/e2e -w /e2e cypress/included:6.8.0 --config baseUrl=https://checkout.stripe.dev/ --browser chrome`
 
 ## Test Overview
 
@@ -43,12 +43,6 @@ Below are some high level clarifications on the purpose of the different tests.
 | TransactionsSuccessTest  | Successful Transaction Tests for different languages |
 | PerformanceAuditTest     | Example Lighthouse Performance Check                 |
 
-## Docker
-
-Docker can be used to run the framework against chrome using the following command.
-
-`docker run -it -v $PWD:/e2e -w /e2e cypress/included:6.8.0 --config baseUrl=https://checkout.stripe.dev/ --browser chrome`
-
 ## Test Data
 
 I utilized faker to populate realistic data for each language.
@@ -60,33 +54,9 @@ In several tests I gave an example of randomizing the credit card used to increa
 ## Linting
 
 Linting has been added.
-Normally I would also add prettier in as well.
 
 To run linting `npm run lint`
 To run the linting and fix issues `npm run lint-fix`
-
-## Implementation Notes
-
-### Browsers
-
-Tests are passing against
-
-- Electron
-- Chrome (ui and headless)
-
-I set the default viewport to one of the most popular ones. Reference https://gs.statcounter.com/screen-resolution-stats
-
-Internal metrics would be used to tailor it towards a particular customer base.
-
-```
-"viewportWidth": 1920,
-"viewportHeight": 1080
-```
-
-The most popular mobile browser viewport is width 360 x height 640. I added an additional script to run with that viewport with
-an extended height of 740 to avoid scrolling issues.
-
-`npm run test-mobile-width-360`
 
 ### Custom Commands
 
@@ -101,6 +71,5 @@ Built-in iframe Support is still pending in Cypress.io - https://github.com/cypr
 I see this ticket has been open since 2016, but it does look like there has been progress recently.
 Hopefully a built-in solution is on the way to help with this.
 
-As I was unable to resolve the 3D Payment iFrame issue myself, I am utilized
+As I was unable to resolve the 3D Payment iFrame issue , I am utilized
 an example iFrame helper via stack overflow to help with that. Additional Details are in the commands.ts file.
-There is one hard coded wait to give the payment iframe time to start loading which I didn't get time to look into. I would not leave this as it will only result in flakey behavior.
